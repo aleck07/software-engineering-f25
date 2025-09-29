@@ -5,5 +5,5 @@ end
 testCases = [212, 98.6, 32, -40, -459]
 
 for temperature in testCases
-    puts "#{temperature} F to C = #{convertToC(temperature)}"
+    puts "#{temperature}F = #{convertToC(temperature)}C"
 end
