@@ -16,7 +16,7 @@ class Vehicle
 
     def fillVehicle()
         @tank = "full"
-        puts "Filled vehicle"
+        puts "Filled #{@vehicle}"
     end
 
     def drive()
