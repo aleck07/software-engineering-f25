@@ -1,12 +1,3 @@
-# Your solution must:
-
-#     Define a class
-#     Define a constructor in that class
-#     Define an instance variable in that class
-#     Define a method that utilizes that instance variable in some way
-#     Instantiate that class at least two times (with .new)
-#     Call methods on the instances of the class
-
 class Vehicle
     def initialize(vehicle, year)
         @vehicle = vehicle
