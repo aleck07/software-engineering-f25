@@ -1,4 +1,4 @@
-class Vehicle
+class Car
     def initialize(vehicle, year)
         @vehicle = vehicle
         @year = year
@@ -7,7 +7,7 @@ class Vehicle
 
     def fillVehicle()
         @tank = "full"
-        puts "Filled #{@vehicle}"
+        puts "Filled #{@vehicle} with gasoline."
     end
 
     def drive()
@@ -20,9 +20,27 @@ class Vehicle
     end
 end
 
-ram2500 = Vehicle.new("Ram 2500", 2020)
-bmw330 = Vehicle.new("BMW 330i xDrive", 2023)
+class Truck < Car
+    def initialize(vehicle, year, towingCapacity)  
+        @vehicle = vehicle
+        @year = year
+        @towingCapacity = towingCapacity  
+        @tank = "empty"
+    end
+
+    def fillVehicle()
+        @tank = "full"
+        puts "Filled #{@vehicle} with diesel."
+    end
+
+    def getTowingCapacity()
+        puts "Towing Capacity: #{@towingCapacity}lbs."
+    end
+end
+ram2500 = Truck.new("Ram 2500", 2020, 20000)
+bmw330 = Car.new("BMW 330i xDrive", 2023)
 
 ram2500.fillVehicle
 ram2500.drive
+ram2500.getTowingCapacity
 bmw330.drive
