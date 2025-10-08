@@ -1,0 +1,2 @@
+# No Functions, No Fun
+In this situation, the biggest benefit of using functions is that we remove a lot of repeated code. In the *Clean Code* textbook, repeated code is one of the worst things a programmer can do. When using functions, it also makes our code so much easier to read. Even though I wrote the no function implementation, reading it was still a huge pain. When I transitioned it to a function, it's trivial to understand whats going on. A life of programming without functions sounds like hell.
