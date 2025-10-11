@@ -1,0 +1,4 @@
+# Exercise 2.2 Name Mangler Reflection
+1. The DRY principle is all about reducing repeated code. DRY stands for "Don't Repeat Yourself". DRY keeps code reusable, readable, and maintanble.
+2. When you hear that functions should be short and do one thing, that doesn't mean that functions should literally contain one statement. When we right functions, they should only serve one purpose or action. We also want our functions short. If we write a function that is long, most likely the function does more than one thing.
+3. Even though we create this function that is only used once in our code base, there are some good reasons behind it. If its a long piece of logic, it generally will look complicated and may be hard to read. When we put it all into a function, with a descriptive name, we can abstract all of that work and read the function name that describes what it does. Using this abstraction upholds the OOP paradigms and will help keep that code maintainable.
