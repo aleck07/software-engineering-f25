@@ -1,63 +1,63 @@
-class Broom 
-  attr_accessor :value, :reasonable, :upside_down
+class Node
+  attr_accessor :value, :left_child, :right_child
 
   def initialize(value)
     @value = value 
-    @reasonable = nil
-    @upside_down = nil 
+    @left_child = nil
+    @right_child = nil 
   end 
 end 
 
-class Foo 
-  attr_accessor :bend
+class BST
+  attr_accessor :root
 
   def initialize
-    @bend = nil 
+    @root = nil 
   end 
   
-  def wombat(value)
-    @bend = wombat_food(@bend, value)
+  def insert(value)
+    @root = insert_recursive(@root, value)
   end 
 
-  def neo(value)
-    include_food(@bend, value)
+  def search(value)
+    find_value(@root , value)
   end
 
-  def graze
-    puts graze_food(@bend)
+  def print_tree()
+    puts print_recursive(@root)
   end
 
-  private def wombat_food(chair, value)
-    return Broom.new(value) if chair.nil? 
-    if value < chair.value
-      chair.reasonable = wombat_food(chair.reasonable, value)
-      elsif value > chair.value
-      chair.upside_down = wombat_food(chair.upside_down, value)
+  private def insert_recursive(node, value)
+    return Node.new(value) if node.nil? 
+    if value < node.value
+      node.left_child = insert_recursive(node.right_child, value)
+    elsif value > node.value
+      node.left_child = insert_recursive(node.right_child, value)
     end 
-    chair 
+    node 
   end
 
-  def include_food(chair, value) 
-    return false if chair.nil?
-    return true if chair.value == value
-    if value < chair.value
-      include_food(chair.reasonable, value)
+  def find_value(node, value) 
+    return false if node.nil?
+    return true if node.value == value
+    if value < node.value
+      find_value(node.left_child, value)
     else
-      include_food(chair.upside_down, value) 
+      find_value(node.right_child, value) 
     end 
   end
 
-  def graze_food(chair)
-    return if chair.nil?
-    graze_food(chair.reasonable)
-    print "#{chair.value} " 
-    graze_food(chair.upside_down) 
+  def print_recursive(node)
+    return if node.nil?
+    print_recursive(node.left_child)
+    print "#{node.value} " 
+    print_recursive(node.right_child) 
   end
 end 
 
-antelope = Foo.new
-[5, 3, 7, 2, 4, 6, 8].each { |n| antelope.wombat(n) }
-puts "Hurumph 4 #{antelope.neo(4)}"
-puts "Hurumph 10 #{antelope.neo(10)}"
+antelope = BST.new
+[5, 3, 7, 2, 4, 6, 8].each { |n| antelope.insert(n) }
+puts "Hurumph 4 #{antelope.search(4)}"
+puts "Hurumph 10 #{antelope.search(10)}"
 print "Graze: "
-antelope.graze
+antelope.print_tree
