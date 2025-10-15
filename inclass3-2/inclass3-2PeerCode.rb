@@ -1,17 +1,27 @@
-class User
-  attr_accessor :profile, :zip, :city, :address
-  def initialize(profile, zip, city, address)
-    @profile = profile
-    @zip = zip
-    @city = city
-    @address = address
-  end
+class Zip
+  attr_accessor :code
+  def initialize(code); @code = code; end
 end
 
-# Old way
-# user = User.new(Profile.new(Address.new(City.new(Zip.new("97403")))))
-# puts user.profile.address.city.zip.code
+class City
+  attr_accessor :zip
+  def initialize(zip); @zip = zip; end
+end
 
-# New way
-user = User.new("some profile object", 97701, "Bend", "123 Rim Rock Way")
-puts user.zip
+class Address
+  attr_accessor :city
+  def initialize(city); @city = city; end
+end
+
+class Profile
+  attr_accessor :address
+  def initialize(address); @address = address; end
+end
+
+class User
+  attr_accessor :profile
+  def initialize(profile); @profile = profile; end
+end
+
+user = User.new(Profile.new(Address.new(City.new(Zip.new("97403")))))
+puts user.profile.address.city.zip.code
