@@ -29,8 +29,38 @@ require File.expand_path(File.dirname(__FILE__) + '/neo')
 #
 # Your goal is to write the score method.
 
+def howManyVal(diceNumber, dice)
+  count = 0
+  dice.each do |value|
+    if value == diceNumber 
+      count += 1
+    end
+  end
+  count
+end
+
 def score(dice)
-  # You need to write this method
+  totalScore = 0
+
+  if howManyVal(1, dice) >= 3
+    totalScore += 1000 + ((howManyVal(1, dice) - 3) * 100)
+  elsif howManyVal(1, dice) > 0
+    totalScore += howManyVal(1, dice) * 100
+  end
+
+  for i in 2..6 do
+    if howManyVal(i, dice) >= 3
+      totalScore += i * 100
+    end
+  end
+
+  if howManyVal(5, dice) >= 4
+    totalScore += (howManyVal(5, dice) - 3) * 50
+  elsif howManyVal(5, dice) < 3
+    totalScore += howManyVal(5, dice) * 50
+  end
+
+  totalScore
 end
 
 class AboutScoringProject < Neo::Koan

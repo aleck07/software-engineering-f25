@@ -16,7 +16,6 @@
 def triangle(a, b, c)
   x, y, z = [a, b, c].sort
   if [a, b, c].min < 1
-    print("RAISE TRIANGLE ERROR")
     raise TriangleError
   end
 
