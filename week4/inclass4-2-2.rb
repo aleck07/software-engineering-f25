@@ -1,3 +1,6 @@
+# For adding a keyboard as an input method, we can create another Keyboard class with get_x_axis and all the other functions, then map them to a specific key press.
+# The author of the code was being short sided when creating this because if we wanted to use another controller for this game, then there is so much "core" code that we need to change if we wanted to add a new controller or change them.
+
 class SidewinderJoystick
   BUTTON_UP = 2
   BUTTON_DOWN = 3
