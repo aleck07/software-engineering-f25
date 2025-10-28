@@ -23,10 +23,10 @@ def audit_sanity(bedtime_mental_state)
   end
 end
 
-if audit_sanity(bedtime_mental_state) == 0
-  puts "error"
-else
+begin 
   new_state = audit_sanity(bedtime_mental_state)
+rescue Exception => e
+  raise Exception.new("External service is offline")
 end
 
 #-------------------------------------------------------------
@@ -37,8 +37,22 @@ class BedtimeMentalState < MentalState ; end
 
 class MorningMentalState < MentalState ; end
 
+class NullMentalState < MentalState
+  def do_work
+    # nothin in here
+  end
+  
+  def auditable?
+    false
+  end
+  
+  def audit!
+    self
+  end
+end
+
 def audit_sanity(bedtime_mental_state)
-  return nil unless bedtime_mental_state.auditable?
+  return NullMentalState.new unless bedtime_mental_state.auditable?
   if bedtime_mental_state.audit!.ok?
     MorningMentalState.new(:ok)
   else 
@@ -54,6 +68,27 @@ new_state.do_work
 #-------------------------------------------------------------
 
 require 'candy_service'
+
+class CandyMachine
+  def initialize
+    @service = CandyService.new
+  end
+
+  def ready?
+    # Wrap the external API call to check if machine is ready
+    @service.ready?
+  end
+
+  def prepare
+    # Wrap the external API setup calls
+    @service.prepare
+  end
+
+  def make!
+    # Wrap the external API call to make candy
+    @service.make!
+  end
+end
 
 machine = CandyMachine.new
 machine.prepare
