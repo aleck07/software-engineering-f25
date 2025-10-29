@@ -1,6 +1,8 @@
 require "minitest/autorun"
 require 'bigdecimal/util'
 
+# Something that I should have added was more test cases, instead of 1 for each. The coder also used decimal values in the addition, and negatives in sum array.
+
 class MathOperations
 		def add(a, b)
 				a+b
