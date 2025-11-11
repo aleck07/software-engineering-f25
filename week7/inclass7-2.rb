@@ -11,18 +11,22 @@ end
 $logger = Logger.new
 
 class Divider
-  def divide(a, b, logger)
+  def initialize(logger)
+    @logger = logger
+  end
+
+  def divide(a, b)
     if b == 0
-      logger.warning("division by zero")
+      @logger.warning("division by zero")
       return nil
     end
-    logger.event("dividing #{a} by #{b}")
+    @logger.event("dividing #{a} by #{b}")
     a / b
   end
 end
 
-d = Divider.new
+d = Divider.new($logger)
 
-d.divide(1,2, $logger)
-d.divide(10,5, $logger)
-d.divide(99,0, $logger)
+d.divide(1,2)
+d.divide(10,5)
+d.divide(99,0)
