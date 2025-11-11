@@ -1,5 +1,5 @@
 def dependency_wrapper(a, b, c)
-  return third_party_dependency_that_changes_frequently(b, a, c)
+  return third_party_dependency_that_changes_very_frequently(b, a, c)
 end
 
 def myfunction1(a, b, c)
